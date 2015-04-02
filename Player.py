@@ -2,7 +2,7 @@ import pygame, sys
 
 class Player():
 	def __init__(self, pos):
-		self.upImages = [pygame.image.load(""),
+		self.upImages = [pygame.image.load("images/player/pu1.PNG"),
 						 pygame.image.load(""),
 						 pygame.image.load("")]
 		self.downImages = [pygame.image.load(""),
