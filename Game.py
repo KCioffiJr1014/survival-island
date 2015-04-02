@@ -21,16 +21,17 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("images/Screens/Start Screen.png").convert()
+bgImage = pygame.image.load("maps/sand.PNG").convert()
 bgRect = bgImage.get_rect()
 
 players = pygame.sprite.Group()
+defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
-Default.containers = (all, balls)
+Default.containers = (all, defaults)
 Player.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
@@ -41,8 +42,8 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-300], 
-				     "images/Buttons/Start Base.png", 
-				     "images/Buttons/Start Clicked.png")
+				     "images/start.png", 
+				     "images/start.png")
 
 while True:
 	while not run:
@@ -64,7 +65,7 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("")
+	BackGround("maps/sand.PNG")
 	
 	player = Player([width/2, height/2])
 	
