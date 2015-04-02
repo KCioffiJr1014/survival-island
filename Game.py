@@ -21,7 +21,7 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("images/startscreen.PNG").convert()
+bgImage = pygame.image.load("maps/sand.PNG").convert()
 bgRect = bgImage.get_rect()
 
 players = pygame.sprite.Group()
@@ -65,7 +65,7 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("")
+	BackGround("maps/sand.PNG")
 	
 	player = Player([width/2, height/2])
 	
