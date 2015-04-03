@@ -4,16 +4,24 @@ class Player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("images/player/pu1.PNG"),
                          pygame.image.load("images/player/pu2.PNG"),
-                         pygame.image.load("images/player/pu3.PNG")]
-        self.downImages = [pygame.image.load("images/player/MU.PNG"),
-                           pygame.image.load("images/player/MU2.PNG"),
-                           pygame.image.load("images/player/pu1.PNG")]
-        self.leftImages = [pygame.image.load("images/player/ML.PNG"),
-                           pygame.image.load("images/player/ML2.PNG"),
-                           pygame.image.load("images/player/pu1.PNG")]
-        self.rightImages = [pygame.image.load("images/player/MR.PNG"),
-                            pygame.image.load("images/player/MR2.PNG"),
-                            pygame.image.load("images/player/pu1.PNG")]
+                         pygame.image.load("images/player/pu3.PNG"),
+                         pygame.image.load("images/player/pu2.PNG"),
+                         pygame.image.load("images/player/pu1.PNG")]
+        self.downImages = [pygame.image.load("images/player/pd1.PNG"),
+                           pygame.image.load("images/player/pd2.PNG"),
+                           pygame.image.load("images/player/pd3.PNG"),
+                           pygame.image.load("images/player/pd2.PNG"),
+                           pygame.image.load("images/player/pd1.PNG")]
+        self.leftImages = [pygame.image.load("images/player/pl1.PNG"),
+                           pygame.image.load("images/player/pl2.PNG"),
+                           pygame.image.load("images/player/pl3.PNG"),
+                           pygame.image.load("images/player/pl2.PNG"),
+                           pygame.image.load("images/player/pl1.PNG")]
+        self.rightImages = [pygame.image.load("images/player/pr1.PNG"),
+                            pygame.image.load("images/player/pr2.PNG"),
+                            pygame.image.load("images/player/pr3.PNG"),
+                            pygame.image.load("images/player/pr2.PNG"),
+                            pygame.image.load("images/player/pr1.PNG")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages

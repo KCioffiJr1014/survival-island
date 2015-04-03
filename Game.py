@@ -113,8 +113,8 @@ while True:
 			timerWait = 0
 			timer.increaseScore(.1)
 		
-		playersHitTerrorists = pygame.sprite.groupcollide(players, terrorists, False, True)
-		defaultsHitDefaults = pygame.sprite.groupcollide(terrorists, villagers, False, False)
+		#playersHitTerrorists = pygame.sprite.groupcollide(players, terrorists, False, True)
+		#defaultsHitDefaults = pygame.sprite.groupcollide(terrorists, villagers, False, False)
 		'''
 		for player in playersHitBalls:
 			for ball in playersHitBalls[player]:
@@ -129,6 +129,7 @@ while True:
 		dirty = all.draw(screen)
 		pygame.display.update(dirty)
 		pygame.display.flip()
+        
 		clock.tick(60)
 		
 		
