@@ -100,12 +100,12 @@ while True:
 				if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 					player.go("stop left")
 			
-		if len(balls) < 10:
+		'''if len(Terrorists) < 10:
 			if random.randint(0, 1*60) == 0:
 				Ball("images/Ball/ball.png",
 						  [random.randint(0,10), random.randint(0,10)],
 						  [random.randint(100, width-100), random.randint(100, height-100)])
-						  
+		'''				  
 						  
 		if timerWait < timerWaitMax:
 			timerWait += 1
