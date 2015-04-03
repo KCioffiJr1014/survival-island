@@ -8,7 +8,7 @@ class Player():
 		self.downImages = [pygame.image.load(""),
 						   pygame.image.load(""),
 						   pygame.image.load("")]
-		self.leftImages = [pygame.image.load(""),
+		self.leftImages = [pygame.image.load("images/player/pl.png"),
 						   pygame.image.load(""),
 						   pygame.image.load("")]
 		self.rightImages = [pygame.image.load(""),
