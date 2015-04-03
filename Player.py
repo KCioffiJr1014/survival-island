@@ -1,6 +1,6 @@
 import pygame, sys
 
-class Player():
+class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         self.upImages = [pygame.image.load("images/player/pu1.PNG"),
                          pygame.image.load("images/player/pu2.PNG"),

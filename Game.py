@@ -7,6 +7,8 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+from Enemy import Enemy
+from Pistol import Pistol
 
 pygame.init()
 
@@ -25,6 +27,8 @@ bgImage = pygame.image.load("maps/sand.PNG").convert()
 bgRect = bgImage.get_rect()
 
 players = pygame.sprite.Group()
+enemys = pygame.sprite.Group()
+pistols = pygame.sprite.Group()
 defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
@@ -36,6 +40,8 @@ Player.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
+Pistol.containers = (all, pistols)
+
 
 
 
