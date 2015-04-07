@@ -1,7 +1,8 @@
-import pygame, sys
+import pygame, sys, math
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos):
+    def __init__(self, pos, size = [100,100]):
+        pygame.sprite.Sprite.__init__(self, self.containers)
         self.upImages = [pygame.image.load("images/player/pu1.PNG"),
                          pygame.image.load("images/player/pu2.PNG"),
                          pygame.image.load("images/player/pu3.PNG"),
@@ -25,6 +26,8 @@ class Player(pygame.sprite.Sprite):
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
+        self.baseImage = pygame.image.load("images/player/pu1.png")
+        self.baseImage = pygame.transform.scale(self.baseImage, size)
         self.frame = 0
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
@@ -32,14 +35,32 @@ class Player(pygame.sprite.Sprite):
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = pos)
         self.maxSpeed = 10
+        self.speedx = 0
+        self.speedy = 0
     
     def update(*args):
         self = args[0]
         width = args[1]
         height = args[2]
-        Player.update(self, width, height)
+        self.move()
         self.animate()
         self.changed = False
+        
+        mousePos = pygame.mouse.get_pos()
+        mousePosPlayerX = mousePos[0] - self.rect.center[0]
+        mousePosPlayerY = mousePos[1] - self.rect.center[1]
+        self.angle = ((math.atan2(mousePosPlayerY, mousePosPlayerX))/math.pi)*180
+        self.angle = -self.angle
+        rot_image = pygame.transform.rotate(self.baseImage, self.angle)
+        rot_rect = self.rect.copy()
+        rot_rect.center = rot_image.get_rect().center
+        rot_image = rot_image.subsurface(rot_rect)
+        self.image = rot_image
+        
+    def move(self):
+        self.speed = [self.speedx, self.speedy]
+        self.rect = self.rect.move(self.speed)
+        
         
     def animate(self):
         if self.waitCount < self.maxWait:
