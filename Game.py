@@ -8,6 +8,7 @@ from BackGround import BackGround
 from Level import Level
 from Block import Block
 from Enemy import Enemy
+from Villagers import Villager
 from Pistol import Pistol
 
 pygame.init()
@@ -73,6 +74,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton2.release(event.pos):
                     running = False
+                    sys.exit()
                     
         bgColor = r,g,b
         screen.fill(bgColor)
@@ -82,19 +84,19 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("maps/sand.PNG")
+    BackGround("maps/black.PNG")
     
-    player = Player([width/2, height/2])
+    
     
     
     level = Level(size, 50)
     level.loadLevel("1")
-
-    timer = Score([80, height - 25], "Time: ", 36)
+    player = Player([width/2, height/2])
+    timer = Score([115, height - 25], "Crumpy Time: ", 36)
     timerWait = 0
     timerWaitMax = 6
 
-    score = Score([width-80, height-25], "Score: ", 36)
+    score = Score([width-125, height-25], "Punch o' Meter: ", 36)
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -117,9 +119,9 @@ while True:
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("stop left")
             
-        '''if len(Terrorists) < 10:
+        '''if len(Enemys) < 10:
             if random.randint(0, 1*60) == 0:
-                Ball("images/Ball/ball.png",
+                Enemy("images/Ball/ball.png",
                           [random.randint(0,10), random.randint(0,10)],
                           [random.randint(100, width-100), random.randint(100, height-100)])
         '''               
@@ -130,8 +132,9 @@ while True:
             timerWait = 0
             timer.increaseScore(.1)
         
-        #playersHitTerrorists = pygame.sprite.groupcollide(players, terrorists, False, True)
-        #defaultsHitDefaults = pygame.sprite.groupcollide(terrorists, villagers, False, False)
+        #playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, True)
+        
+        #defaultsHitDefaults = pygame.sprite.groupcollide(enemys, villagers, False, False)
         '''
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
@@ -142,6 +145,8 @@ while True:
                 bully.collideBall(victem)
         '''
         all.update(width, height)
+        
+     
         
         dirty = all.draw(screen)
         pygame.display.update(dirty)
