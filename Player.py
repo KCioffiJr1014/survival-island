@@ -8,7 +8,10 @@ class Player(pygame.sprite.Sprite):
                             pygame.image.load("images/player/pr2.PNG"),
                             pygame.image.load("images/player/pr3.PNG"),
                             pygame.image.load("images/player/pr2.PNG"),
-                            pygame.image.load("images/player/pr1.PNG")]
+                            pygame.image.load("images/player/pr1.PNG"),
+                            pygame.image.load("images/player/pr4.PNG"),
+                            pygame.image.load("images/player/pr5.PNG"),
+                            pygame.image.load("images/player/pr4.PNG")]
         self.changed = False
         #self.baseImage = pygame.image.load("images/player/pu1.png")
         #self.baseImage = pygame.transform.scale(self.baseImage, size)
