@@ -31,7 +31,7 @@ class Level():
         for y, line in enumerate(lines):
             for x, c in enumerate(line):
                 if c == "#":
-                    Block("maps/sandblock.png", [x*self.blockSize,y*self.blockSize])
+                    Block("maps/sand.png", [x*self.blockSize,y*self.blockSize])
                 elif c =="!":
                     Block("maps/grass.png", [x*self.blockSize,y*self.blockSize])
             
