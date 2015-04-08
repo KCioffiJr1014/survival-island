@@ -17,6 +17,8 @@ clock = pygame.time.Clock()
 
 width = 800 
 height = 600
+fullscreen = 0
+altFlag = False
 size = width, height
 
 
@@ -56,6 +58,7 @@ startButton2 = Button([width/1.4, height/1.5],
                     "images/quit.png",
                     "images/quit.png")
                     
+projectiles = []
 
 while True:
     while not run:
@@ -109,6 +112,13 @@ while True:
                     player.go("down")
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
+                elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
+                    altFlag = True
+                elif (event.key == pygame.K_RETURN) and altFlag:
+                    if fullscreen == 0:
+                        fullscreen = pygame.FULLSCREEN
+                elif (event.key == pygame.MOUSEBUTTONDOWN):
+                    projectiles += player.attack("pistol")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
@@ -118,6 +128,10 @@ while True:
                     player.go("stop down")
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("stop left")
+                elif (event.key == pygame.MOUSEBUTTONUP):
+                    player.attack("stop pistol")
+                elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
+                    altFlag = False
             
         '''if len(Enemys) < 10:
             if random.randint(0, 1*60) == 0:

@@ -1,4 +1,5 @@
 import pygame, sys, math
+from Pistol import Pistol
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
@@ -21,6 +22,13 @@ class Player(pygame.sprite.Sprite):
         self.maxSpeed = 10
         self.speedx = 0
         self.speedy = 0
+        self.pistoling = False
+        self.pistolCount = 0
+        self.maxPistolCount = 100000000
+        self.pistolCoolDown = 0
+        self.pistolCoolDownMax = 50
+        self.pistoldelay = 5
+        self.damage = 40
     
     def update(*args):
         self = args[0]
@@ -29,6 +37,17 @@ class Player(pygame.sprite.Sprite):
         self.move()
         self.animate()
         self.changed = False
+        
+    def attack(self, atk):
+        if atk == "pistol" and self.pistolCoolDown == 0:
+            self.pistoling = True
+            self.pistolCoolDown = self.pistolCoolDownMax
+            return [Pistol(self)]
+        '''if atk == "spray" and self.sprayCoolDown == 0:
+            self.spraying = True
+            self.sprayCoolDown = self.sprayCoolDownMax
+            return [Spray(self)]'''
+        return []
         
         
     def move(self):
