@@ -1,5 +1,6 @@
 import pygame, sys, math
 from Bullet import Bullet
+from Crosshair import Crosshair
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
