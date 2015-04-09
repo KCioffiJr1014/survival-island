@@ -1,5 +1,5 @@
 import pygame, sys, math
-from Pistol import Pistol
+from Bullet import Bullet
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
@@ -103,7 +103,7 @@ class Player(pygame.sprite.Sprite):
             self.speedx = 0
 
     def shoot(self, option=None):
-        if option != None:
+        if option == None:
             return Bullet(self.rect.center, self.angle)
 
 
