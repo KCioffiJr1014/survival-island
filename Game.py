@@ -39,6 +39,7 @@ hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
+crosshairs = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Default.containers = (all, defaults)
@@ -48,7 +49,7 @@ Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
 Pistol.containers = (all, pistols)
 Bullet.containers = (all, bullets)
-
+Crosshair.containers = (all, crosshairs)
 
 
 
@@ -102,6 +103,9 @@ while True:
     timer = Score([115, height - 25], "Crumpy Time: ", 36)
     timerWait = 0
     timerWaitMax = 6
+    
+    Crosshair("images/projectiles/target.png")
+    pygame.mouse.set_visible(False)
 
     score = Score([width-125, height-25], "Punch o' Meter: ", 36)
     while run:
