@@ -102,6 +102,8 @@ class Player(pygame.sprite.Sprite):
         elif direction == "stop left":
             self.speedx = 0
 
-
+    def shoot(self, option=None):
+        if option != None:
+            return Bullet(self.rect.center, self.angle)
 
 

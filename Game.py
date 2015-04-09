@@ -10,12 +10,13 @@ from Block import Block
 from Enemy import Enemy
 from Villagers import Villager
 from Pistol import Pistol
+from Bullet import Bullet
 
 pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 800 
+width = 800
 height = 600
 fullscreen = 0
 altFlag = False
@@ -36,6 +37,7 @@ defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
+bullets = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Default.containers = (all, defaults)
@@ -44,6 +46,7 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
 Pistol.containers = (all, pistols)
+Bullet.containers = (all, bullets)
 
 
 
@@ -118,7 +121,7 @@ while True:
                     if fullscreen == 0:
                         fullscreen = pygame.FULLSCREEN
                 elif (event.key == pygame.MOUSEBUTTONDOWN):
-                    projectiles += player.attack("pistol")
+                    player.shoot()
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
@@ -129,7 +132,7 @@ while True:
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("stop left")
                 elif (event.key == pygame.MOUSEBUTTONUP):
-                    player.attack("stop pistol")
+                    player.shoot("stop")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
             
