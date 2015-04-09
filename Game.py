@@ -11,6 +11,7 @@ from Enemy import Enemy
 from Villagers import Villager
 from Pistol import Pistol
 from Bullet import Bullet
+from Crosshair import Crosshair
 
 pygame.init()
 
@@ -120,9 +121,12 @@ while True:
                 elif (event.key == pygame.K_RETURN) and altFlag:
                     if fullscreen == 0:
                         fullscreen = pygame.FULLSCREEN
-                elif (event.key == pygame.MOUSEBUTTONDOWN):
-                    player.shoot()
-            if event.type == pygame.KEYUP:
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    print "1"
+                    b = player.shoot()
+                    print len(bullets)
+            elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
                 if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
