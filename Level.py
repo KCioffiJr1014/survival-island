@@ -34,6 +34,8 @@ class Level():
                     Block("maps/sand.png", [x*self.blockSize,y*self.blockSize])
                 elif c =="!":
                     Block("maps/grass.png", [x*self.blockSize,y*self.blockSize])
+                elif c =="+":
+                    Block("maps/grasssand.png", [x*self.blockSize,y*self.blockSize])
             
 
 
