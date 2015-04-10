@@ -89,6 +89,7 @@ while True:
                     
         bgColor = r,g,b
         screen.fill(bgColor)
+        fullscreen = False
         screen.blit(bgImage, bgRect)
         screen.blit(startButton.image, startButton.rect)
         screen.blit(startButton2.image, startButton2.rect)
@@ -109,7 +110,7 @@ while True:
     healthbar = HealthBar([width - 75, 75])  #DEFAULT: 100 MODED: 200
     
     
-    timer = Score([115, height - 25], "Crumpy Time: ", 36)
+    timer = Score([115, height - 25], "USELESS FOR NOW: ", 36)
     timerWait = 0
     timerWaitMax = 6
     
@@ -118,24 +119,28 @@ while True:
     Crosshair("images/projectiles/target.png")
     pygame.mouse.set_visible(False)
 
-    score = Score([width-125, height-25], "Punch o' Meter: ", 36)
+    score = Score([width-125, height-25], "USELESS FOR NOW: ", 36)
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("up")
-                if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     player.go("right")
-                if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                     player.go("down")
-                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
-                elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
-                    altFlag = True
-                elif (event.key == pygame.K_RETURN) and altFlag:
-                    if fullscreen == 0:
-                        fullscreen = pygame.FULLSCREEN
+                if event.key == pygame.K_RETURN :
+                    print event.mod, pygame.KMOD_RALT
+                if event.mod & pygame.KMOD_RALT: #Binary and with KMOD_RIGHT to filter out other mod keys
+                    if fullscreen:
+                        pygame.display.set_mode(size)
+                        fullscreen = True
+                    else:
+                        pygame.display.set_mode(size, pygame.FULLSCREEN)
+                        fullscreen = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     #print "1"
