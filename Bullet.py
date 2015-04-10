@@ -3,12 +3,12 @@ import math,sys,pygame
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos, angle):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.baseImage = pygame.image.load("images/projectiles/target.PNG")
+        self.baseImage = pygame.image.load("images/projectiles/bullet.PNG")
         self.rect = self.baseImage.get_rect()
         self.angle = angle
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
         rot_rect = self.rect.copy()
-        rot_rect.center = rot_image.get_rect().center
+        rot_rect.center = rot_image.get_rect().center-75
         rot_image = rot_image.subsurface(rot_rect)
         self.image = rot_image
         self.place(pos)    
