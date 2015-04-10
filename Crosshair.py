@@ -11,6 +11,6 @@ class Crosshair(pygame.sprite.Sprite):
     def update(*args):
         self = args[0]
         mousePos = pygame.mouse.get_pos()
-        print mousePos, self.rect.center
+        #print mousePos, self.rect.center
         self.rect.center = mousePos
         

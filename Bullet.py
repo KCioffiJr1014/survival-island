@@ -8,14 +8,20 @@ class Bullet(pygame.sprite.Sprite):
         self.angle = angle
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
         rot_rect = self.rect.copy()
-        rot_rect.center = rot_image.get_rect().center-75
+        rot_rect.center = rot_image.get_rect().center
         rot_image = rot_image.subsurface(rot_rect)
-        self.image = rot_image
-        self.place(pos)    
+        self.image = rot_image 
+        #x = math.cos(math.radians(self.angle)) + 15 + pos[0]
+        x = pos[0]
+        #y = -math.sin(math.radians(self.angle)) + 50 + pos[1]
+        y = pos[1]
+        print angle, pos, [x,y]
+        self.place([x,y])    
         self.living = True
         self.speedx = math.cos(math.radians(self.angle))*10
         self.speedy = -math.sin(math.radians(self.angle))*10
         self.speed = [self.speedx, self.speedy] 
+       
         
     def move(self):
         self.rect = self.rect.move(self.speed)

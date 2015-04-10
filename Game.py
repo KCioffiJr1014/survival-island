@@ -12,6 +12,7 @@ from Villagers import Villager
 from Pistol import Pistol
 from Bullet import Bullet
 from Crosshair import Crosshair
+from Health import HealthBar
 
 pygame.init()
 
@@ -40,6 +41,7 @@ backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
+healthbars = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Default.containers = (all, defaults)
@@ -50,6 +52,7 @@ Score.containers = (all, hudItems)
 Pistol.containers = (all, pistols)
 Bullet.containers = (all, bullets)
 Crosshair.containers = (all, crosshairs)
+HealthBar.containers = (all, healthbars)
 
 
 
@@ -99,10 +102,18 @@ while True:
     
     level = Level(size, 50)
     level.loadLevel("1")
+    
+    
+    
     player = Player([width/2, height/2])
+    healthbar = HealthBar([width - 75, 75])  #DEFAULT: 100 MODED: 200
+    
+    
     timer = Score([115, height - 25], "Crumpy Time: ", 36)
     timerWait = 0
     timerWaitMax = 6
+    
+    
     
     Crosshair("images/projectiles/target.png")
     pygame.mouse.set_visible(False)
@@ -127,9 +138,9 @@ while True:
                         fullscreen = pygame.FULLSCREEN
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    print "1"
+                    #print "1"
                     b = player.shoot()
-                    print len(bullets)
+                    #print len(bullets)
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
