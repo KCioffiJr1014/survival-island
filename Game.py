@@ -109,6 +109,10 @@ while True:
     player = Player([width/2, height/2])
     healthbar = HealthBar([width - 75, 75])  #DEFAULT: 100 MODED: 200
     
+    enemys = []
+    maxEnemy = 5
+    Enemys += [Enemy("images/player/", [1, 2], [100, 125])]
+    
     
     timer = Score([115, height - 25], "USELESS: ", 36)
     timerWait = 0
@@ -160,31 +164,28 @@ while True:
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
             
-        '''if len(Enemys) < 10:
-            if random.randint(0, 1*60) == 0:
-                Enemy("images/Ball/ball.png",
-                          [random.randint(0,10), random.randint(0,10)],
-                          [random.randint(100, width-100), random.randint(100, height-100)])
-        '''               
+        if len(enemys) < maxEnemy:
+            if random.randint(0, 1 * 60) == 0:
+                enemys += [Enemy("rsc/Enemy/Enemy.png",
+                                         [random.randint(0, 10), random.randint(0, 10)],
+                                         [random.randint(100, width - 400), random.randint(100, height - 400)]
+                     
                           
-        if timerWait < timerWaitMax:
-            timerWait += 1
-        else:
-            timerWait = 0
-            timer.increaseScore(.1)
+        #if timerWait < timerWaitMax:
+         #   timerWait += 1
+        #else:
+         #   timerWait = 0
+          #  timer.increaseScore(.1)
         
         #playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, True)
         
         #defaultsHitDefaults = pygame.sprite.groupcollide(enemys, villagers, False, False)
-        '''
-        for player in playersHitBalls:
-            for ball in playersHitBalls[player]:
+        
+        for player in playersHitEnemys:
+            for enemy in playersHitEnemys[player]:
                 score.increaseScore(1)
                 
-        for bully in ballsHitBalls:
-            for victem in ballsHitBalls[bully]:
-                bully.collideBall(victem)
-        '''
+        
         all.update(width, height)
         
      
