@@ -134,7 +134,7 @@ while True:
                     player.go("left")
                 if event.key == pygame.K_RETURN :
                     print event.mod, pygame.KMOD_RALT
-                if event.mod & pygame.KMOD_RALT: #Binary and with KMOD_RIGHT to filter out other mod keys
+                if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:
                     if fullscreen:
                         pygame.display.set_mode(size)
                         fullscreen = True
