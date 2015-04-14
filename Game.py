@@ -53,6 +53,7 @@ Pistol.containers = (all, pistols)
 Bullet.containers = (all, bullets)
 Crosshair.containers = (all, crosshairs)
 HealthBar.containers = (all, healthbars)
+Enemy.containers = (all, enemys)
 
 
 
@@ -109,9 +110,9 @@ while True:
     player = Player([width/2, height/2])
     healthbar = HealthBar([width - 75, 75])  #DEFAULT: 100 MODED: 200
     
-    enemys = []
+    Enemys = []
     maxEnemy = 5
-    Enemys += [Enemy("images/player/", [1, 2], [100, 125])]
+    Enemys += [Enemy("images/enemy/pr1.png", [1, 2], [100, 125])]
     
     
     timer = Score([115, height - 25], "USELESS: ", 36)
@@ -166,9 +167,9 @@ while True:
             
         if len(enemys) < maxEnemy:
             if random.randint(0, 1 * 60) == 0:
-                enemys += [Enemy("rsc/Enemy/Enemy.png",
+                Enemy("images/enemy/pr1.png",
                                          [random.randint(0, 10), random.randint(0, 10)],
-                                         [random.randint(100, width - 400), random.randint(100, height - 400)]
+                                         [random.randint(100, width - 400), random.randint(100, height - 400)])
                      
                           
         #if timerWait < timerWaitMax:
@@ -177,9 +178,9 @@ while True:
          #   timerWait = 0
           #  timer.increaseScore(.1)
         
-        #playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, True)
+        playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)
         
-        #defaultsHitDefaults = pygame.sprite.groupcollide(enemys, villagers, False, False)
+        
         
         for player in playersHitEnemys:
             for enemy in playersHitEnemys[player]:

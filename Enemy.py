@@ -3,7 +3,6 @@ from Default import Default
 
 class Enemy(pygame.sprite.Sprite):
 	def __init__(self, image, speed = [0,0], pos = [0,0]):
-            Default.__init__(self, "images/player/pl.png", [0,0], pos)
             pygame.sprite.Sprite.__init__(self, self.containers)
             self.image = pygame.image.load(image)
             self.rect = self.image.get_rect()
