@@ -12,6 +12,7 @@ class Enemy(pygame.sprite.Sprite):
             self.place(pos)
             self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
             self.living = True
+            
 		
 	def place(self, pos):
 		self.rect.center = pos
@@ -34,3 +35,9 @@ class Enemy(pygame.sprite.Sprite):
 		x2 = pt[0]
 		y2 = pt[1]
 		return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+    '''def PlayerPoint(self, player):
+         mousePos
+        mousePosPlayerX
+        mousePosPlayerY
+        
