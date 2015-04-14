@@ -178,9 +178,12 @@ while True:
          #   timerWait = 0
           #  timer.increaseScore(.1)
         
-        playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)
-        
-        
+        playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
+    
+        #playerHitWalls = pygame.sprite.groupcollide(players, block, False, True)
+    
+    
+                
         
         for player in playersHitEnemys:
             for enemy in playersHitEnemys[player]:
