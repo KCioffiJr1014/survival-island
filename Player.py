@@ -6,6 +6,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = [pygame.image.load("images/player/pr1.PNG"),
+                            pygame.image.load("images/player/ppist.PNG"),
                             pygame.image.load("images/player/pr2.PNG"),
                             pygame.image.load("images/player/pr3.PNG"),
                             pygame.image.load("images/player/pr2.PNG"),
@@ -14,8 +15,6 @@ class Player(pygame.sprite.Sprite):
                             pygame.image.load("images/player/pr5.PNG"),
                             pygame.image.load("images/player/pr4.PNG")]
         self.changed = False
-        #self.baseImage = pygame.image.load("images/player/pu1.png")
-        #self.baseImage = pygame.transform.scale(self.baseImage, size)
         self.frame = 0
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
@@ -26,13 +25,22 @@ class Player(pygame.sprite.Sprite):
         self.maxSpeed = 10
         self.speedx = 0
         self.speedy = 0
+        self.pistolimage = self.image.load("images/player/ppist.PNG")
+        self.uziim
         self.pistoling = False
         self.pistolCount = 0
         self.maxPistolCount = 100000000
         self.pistolCoolDown = 0
         self.pistolCoolDownMax = 50
         self.pistoldelay = 5
+        self.uziing = False
+        self.uziCount = 0
+        self.maxUziCount = 100000000
+        self.uziCoolDown = 0
+        self.uziCoolDownMax = 50
+        self.uzidelay = 5
         self.damage = 40
+        
     
     def update(*args):
         self = args[0]
@@ -47,10 +55,11 @@ class Player(pygame.sprite.Sprite):
             self.pistoling = True
             self.pistolCoolDown = self.pistolCoolDownMax
             return [Pistol(self)]
-        '''if atk == "spray" and self.sprayCoolDown == 0:
-            self.spraying = True
-            self.sprayCoolDown = self.sprayCoolDownMax
-            return [Spray(self)]'''
+        return []
+        if atk == "uzi" and self.uziCoolDown == 0:
+            self.uziing = True
+            self.uziCoolDown = self.uziCoolDownMax
+            return [Uzi(self)]
         return []
         
         
@@ -106,5 +115,13 @@ class Player(pygame.sprite.Sprite):
     def shoot(self, option=None):
         if option == None:
             return Bullet(self.rect.center, self.angle)
+            
+    def GunChange(self, kind):
+        if kind == "pistol":
+            self.image = self.pistolimage
+        elif kind == "uzi":
+            self.image = self.uziimage
+        elif kind == "shotgun":
+            self.image = self.shotgunimage
 
 

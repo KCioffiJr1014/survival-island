@@ -137,6 +137,12 @@ while True:
                     player.go("down")
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
+                elif event.key == pygame.K_1:
+                    player.GunChange("pistol")
+                elif event.key == pygame.K_2:
+                    player.GunChange("uzi")
+                elif event.key == pygame.K_3:
+                    player.GunChange("shotgun")
                 if event.key == pygame.K_RETURN :
                     print event.mod, pygame.KMOD_RALT
                 if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:
@@ -148,9 +154,8 @@ while True:
                         fullscreen = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    #print "1"
                     b = player.shoot()
-                    #print len(bullets)
+                    
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
@@ -179,8 +184,10 @@ while True:
           #  timer.increaseScore(.1)
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
+
+        bulletHitEnemys = pygame.sprite.groupcollide(bullets, enemys, True, True)
     
-        #playerHitWalls = pygame.sprite.groupcollide(players, block, False, True)
+        playerHitWalls = pygame.sprite.groupcollide(players, blocks, False, False)
     
     
                 
@@ -192,7 +199,7 @@ while True:
         
         all.update(width, height)
         
-     
+        
         
         dirty = all.draw(screen)
         pygame.display.update(dirty)
