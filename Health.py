@@ -40,7 +40,10 @@ class HealthBar(pygame.sprite.Sprite):
     def health_bar(self):
         pass
             
-    def update(self, life, maxLife):
+    def update(args):
+        self = args[0]
+        width = args[1]
+        height = args[2]
         percentLife = float(life)/float(maxLife)
         if percentLife > .95:
             self.frame = 19

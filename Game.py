@@ -138,7 +138,7 @@ while True:
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
                 elif event.key == pygame.K_1:
-                    player.GunChange("pistol")
+                    player.changeGun("pistol")
                     print "I'm changing"
                 elif event.key == pygame.K_2:
                     player.GunChange("uzi")
@@ -195,6 +195,7 @@ while True:
         
         for player in playersHitEnemys:
             for enemy in playersHitEnemys[player]:
+                player.modifyHealth()    
                 score.increaseScore(1)
                 
         

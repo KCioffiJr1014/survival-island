@@ -1,6 +1,7 @@
 import pygame, sys, math
 from Bullet import Bullet
 from Crosshair import Crosshair
+from Health import HealthBar
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
@@ -25,8 +26,9 @@ class Player(pygame.sprite.Sprite):
         self.maxSpeed = 10
         self.speedx = 0
         self.speedy = 0
-        self.pistolimage = self.image.load("images/player/ppist.PNG")
-        self.uziim
+        self.pistolimage = pygame.image.load("images/player/ppist.PNG")
+        self.uziimage = pygame.image.load("images/player/puzi.PNG")
+        self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
         self.pistoling = False
         self.pistolCount = 0
         self.maxPistolCount = 100000000
@@ -40,12 +42,17 @@ class Player(pygame.sprite.Sprite):
         self.uziCoolDownMax = 50
         self.uzidelay = 5
         self.damage = 40
+        self.health = 250
+        self.maxHealth = 250
+        self.nodamage = 0
+        self.living = True
         
     
     def update(*args):
         self = args[0]
         width = args[1]
         height = args[2]
+        modifyHealth()
         self.move()
         self.animate()
         self.changed = False
@@ -111,12 +118,20 @@ class Player(pygame.sprite.Sprite):
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            
+    def modifyHealth (self, amount):
+        self.health += amount
+        if self.health <= 0:
+            self.health = 0
+            self.living = False
+        elif self.health >= self.maxHealth:
+            self.health = self.maxHealth
 
     def shoot(self, option=None):
         if option == None:
             return Bullet(self.rect.center, self.angle)
             
-    def GunChange(self, kind):
+    def changeGun(self, kind):
         if kind == "pistol":
             self.image = self.pistolimage
         elif kind == "uzi":
