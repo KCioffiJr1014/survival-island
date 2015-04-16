@@ -52,7 +52,6 @@ class Player(pygame.sprite.Sprite):
         self = args[0]
         width = args[1]
         height = args[2]
-        modifyHealth()
         self.move()
         self.animate()
         self.changed = False
