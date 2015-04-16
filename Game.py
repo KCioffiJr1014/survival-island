@@ -108,7 +108,7 @@ while True:
     
     
     player = Player([width/2, height/2])
-    healthbar = HealthBar([width - 75, 75])
+    #healthbar = HealthBar([width - 75, 75])
     
     Enemys = []
     maxEnemy = 5
@@ -139,11 +139,13 @@ while True:
                     player.go("left")
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
-                    print "I'm changing"
+                    print "Pistol"
                 elif event.key == pygame.K_2:
-                    player.GunChange("uzi")
+                    player.changeGun("uzi")
+                    print "Uzi"
                 elif event.key == pygame.K_3:
-                    player.GunChange("shotgun")
+                    player.changeGun("shotgun")
+                    print "Shotgun"
                 if event.key == pygame.K_RETURN :
                     print event.mod, pygame.KMOD_RALT
                 if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:
@@ -195,7 +197,7 @@ while True:
         
         for player in playersHitEnemys:
             for enemy in playersHitEnemys[player]:
-                player.modifyHealth()    
+                #player.modifyHealth()    
                 score.increaseScore(1)
                 
         
