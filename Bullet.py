@@ -4,6 +4,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos, angle):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.baseImage = pygame.image.load("images/projectiles/bullet.PNG")
+        
         self.rect = self.baseImage.get_rect()
         self.angle = angle
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
@@ -41,6 +42,9 @@ class Bullet(pygame.sprite.Sprite):
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+    #def BulletChange(self, kind):
+        
         
     
         

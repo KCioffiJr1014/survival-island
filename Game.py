@@ -108,7 +108,7 @@ while True:
     
     
     player = Player([width/2, height/2])
-    healthbar = HealthBar([width - 75, 75])  #DEFAULT: 100 MODED: 200
+    healthbar = HealthBar([width - 75, 75])
     
     Enemys = []
     maxEnemy = 5
@@ -139,6 +139,7 @@ while True:
                     player.go("left")
                 elif event.key == pygame.K_1:
                     player.GunChange("pistol")
+                    print "I'm changing"
                 elif event.key == pygame.K_2:
                     player.GunChange("uzi")
                 elif event.key == pygame.K_3:
@@ -187,7 +188,7 @@ while True:
 
         bulletHitEnemys = pygame.sprite.groupcollide(bullets, enemys, True, True)
     
-        playerHitWalls = pygame.sprite.groupcollide(players, blocks, False, False)
+        playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
     
     
                 
