@@ -6,14 +6,14 @@ from Health import HealthBar
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [pygame.image.load("images/player/pr1.PNG"),
-                            pygame.image.load("images/player/pr2.PNG"),
+        self.images = [pygame.image.load("images/player/ppist.PNG"),
+                            pygame.image.load("images/player/ppist2.PNG"),
+                            pygame.image.load("images/player/ppist3.PNG"),
+                            pygame.image.load("images/player/ppist2.PNG"),
                             pygame.image.load("images/player/ppist.PNG"),
-                            pygame.image.load("images/player/pr2.PNG"),
-                            pygame.image.load("images/player/pr1.PNG"),
-                            pygame.image.load("images/player/pr4.PNG"),
-                            pygame.image.load("images/player/pr5.PNG"),
-                            pygame.image.load("images/player/pr4.PNG")]
+                            pygame.image.load("images/player/ppist4.PNG"),
+                            pygame.image.load("images/player/ppist5.PNG"),
+                            pygame.image.load("images/player/ppist4.PNG")]
         self.changed = False
         self.frame = 0
         self.maxFrame = len(self.images) - 1

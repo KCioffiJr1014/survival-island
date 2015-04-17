@@ -124,7 +124,7 @@ while True:
     Crosshair("images/projectiles/target.png")
     pygame.mouse.set_visible(False)
 
-    score = Score([width-125, height-25], "USELESS: ", 36)
+    score = Score([width-125, height-25], "HI: ", 36)
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
