@@ -7,9 +7,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = [pygame.image.load("images/player/pr1.PNG"),
-                            pygame.image.load("images/player/ppist.PNG"),
                             pygame.image.load("images/player/pr2.PNG"),
-                            pygame.image.load("images/player/pr3.PNG"),
+                            pygame.image.load("images/player/ppist.PNG"),
                             pygame.image.load("images/player/pr2.PNG"),
                             pygame.image.load("images/player/pr1.PNG"),
                             pygame.image.load("images/player/pr4.PNG"),
