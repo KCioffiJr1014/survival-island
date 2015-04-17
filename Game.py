@@ -108,14 +108,14 @@ while True:
     
     
     player = Player([width/2, height/2])
-    #healthbar = HealthBar([width - 75, 75])
+    healthbar = HealthBar([width - 75, 75])
     
     Enemys = []
     maxEnemy = 5
     Enemys += [Enemy("images/enemy/pr1.png", [1, 2], [100, 125])]
     
     
-    timer = Score([115, height - 25], "USELESS: ", 36)
+    timer = Score([115, height - 25], " ", 36)
     timerWait = 0
     timerWaitMax = 6
     
@@ -180,28 +180,32 @@ while True:
                                          [random.randint(100, width - 400), random.randint(100, height - 400)])
                      
                           
-        #if timerWait < timerWaitMax:
-         #   timerWait += 1
-        #else:
-         #   timerWait = 0
-          #  timer.increaseScore(.1)
+        if timerWait < timerWaitMax:
+            timerWait += 1
+        else:
+            timerWait = 0
+            timer.increaseScore(.00001)
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
 
         bulletHitEnemys = pygame.sprite.groupcollide(bullets, enemys, True, True)
     
         playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
+        
+        enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, True)
     
     
+        '''for healthbar in enemyHitHealth:
+            for healthbar in enemyHitHealth[healthbar]:
+                player.modifyHealth(healthbar)
                 
         
-        for player in playersHitEnemys:
-            for enemy in playersHitEnemys[player]:
-                #player.modifyHealth()    
-                score.increaseScore(1)
+        for player in bulletHitEnemys:
+            for enemy in bulletHitEnemys[bullet]:
+                score.increaseScore(1)'''
                 
         
-        all.update(width, height)
+        all.update(width, height, player.health, player.maxHealth)
         
         
         

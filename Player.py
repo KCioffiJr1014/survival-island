@@ -119,7 +119,7 @@ class Player(pygame.sprite.Sprite):
             self.speedx = 0
             
     def modifyHealth (self, amount):
-        self.health += amount
+        self.health == amount
         if self.health <= 0:
             self.health = 0
             self.living = False
