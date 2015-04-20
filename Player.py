@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
                             #pygame.image.load("images/player/ppist.PNG"),
                             #pygame.image.load("images/player/ppist4.PNG"),
                             #pygame.image.load("images/player/ppist5.PNG"),
-                            #pygame.image.load("images/player/ppist4.PNG"),
+                            #pygame.image.load("images/player/ppist4.PNG")
                             pygame.image.load("images/player/pshot.PNG")]
                             #pygame.image.load("images/player/puzi.PNG"),
                             #pygame.image.load("images/player/puzi2.PNG"),
