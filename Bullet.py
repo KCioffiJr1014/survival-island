@@ -3,7 +3,7 @@ import math,sys,pygame
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, pos, angle):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.baseImage = pygame.image.load("images/projectiles/ubullet.PNG")
+        self.baseImage = pygame.image.load("images/projectiles/sbullet.PNG")
         
         self.rect = self.baseImage.get_rect()
         self.angle = angle

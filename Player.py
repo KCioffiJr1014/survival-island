@@ -6,14 +6,23 @@ from Health import HealthBar
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [pygame.image.load("images/player/ppist.PNG"),
-                            pygame.image.load("images/player/ppist2.PNG"),
-                            pygame.image.load("images/player/ppist3.PNG"),
-                            pygame.image.load("images/player/ppist2.PNG"),
-                            pygame.image.load("images/player/ppist.PNG"),
-                            pygame.image.load("images/player/ppist4.PNG"),
-                            pygame.image.load("images/player/ppist5.PNG"),
-                            pygame.image.load("images/player/ppist4.PNG")]
+        self.images = [#pygame.image.load("images/player/ppist.PNG"),
+                            #pygame.image.load("images/player/ppist2.PNG"),
+                            #pygame.image.load("images/player/ppist3.PNG"),
+                            #pygame.image.load("images/player/ppist2.PNG"),
+                            #pygame.image.load("images/player/ppist.PNG"),
+                            #pygame.image.load("images/player/ppist4.PNG"),
+                            #pygame.image.load("images/player/ppist5.PNG"),
+                            #pygame.image.load("images/player/ppist4.PNG"),
+                            pygame.image.load("images/player/pshot.PNG")]
+                            #pygame.image.load("images/player/puzi.PNG"),
+                            #pygame.image.load("images/player/puzi2.PNG"),
+                            #pygame.image.load("images/player/puzi3.PNG"),
+                            #pygame.image.load("images/player/puzi2.PNG"),
+                            #pygame.image.load("images/player/puzi.PNG"),
+                            #pygame.image.load("images/player/puzi4.PNG"),
+                            #pygame.image.load("images/player/puzi5.PNG"),
+                            #pygame.image.load("images/player/puzi4.PNG")]
         self.changed = False
         self.frame = 0
         self.maxFrame = len(self.images) - 1
