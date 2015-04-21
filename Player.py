@@ -8,23 +8,26 @@ from Health import HealthBar
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [#pygame.image.load("images/player/ppist.PNG"),
-                            #pygame.image.load("images/player/ppist2.PNG"),
-                            #pygame.image.load("images/player/ppist3.PNG"),
-                            #pygame.image.load("images/player/ppist2.PNG"),
-                            #pygame.image.load("images/player/ppist.PNG"),
-                            #pygame.image.load("images/player/ppist4.PNG"),
-                            #pygame.image.load("images/player/ppist5.PNG"),
-                            #pygame.image.load("images/player/ppist4.PNG")
-                            pygame.image.load("images/player/pshot.PNG")]
-                            #pygame.image.load("images/player/puzi.PNG"),
-                            #pygame.image.load("images/player/puzi2.PNG"),
-                            #pygame.image.load("images/player/puzi3.PNG"),
-                            #pygame.image.load("images/player/puzi2.PNG"),
-                            #pygame.image.load("images/player/puzi.PNG"),
-                            #pygame.image.load("images/player/puzi4.PNG"),
-                            #pygame.image.load("images/player/puzi5.PNG"),
-                            #pygame.image.load("images/player/puzi4.PNG")]
+        
+        self.pistolImages = [pygame.image.load("images/player/ppist.PNG"),
+                        pygame.image.load("images/player/ppist2.PNG"),
+                        pygame.image.load("images/player/ppist3.PNG"),
+                        pygame.image.load("images/player/ppist2.PNG"),
+                        pygame.image.load("images/player/ppist.PNG"),
+                        pygame.image.load("images/player/ppist4.PNG"),
+                        pygame.image.load("images/player/ppist5.PNG"),
+                        pygame.image.load("images/player/ppist4.PNG")]
+        self.shotgunImages = [pygame.image.load("images/player/pshot.PNG")]
+        self.uziImages =   [pygame.image.load("images/player/puzi.PNG"),
+                            pygame.image.load("images/player/puzi2.PNG"),
+                            pygame.image.load("images/player/puzi3.PNG"),
+                            pygame.image.load("images/player/puzi2.PNG"),
+                            pygame.image.load("images/player/puzi.PNG"),
+                            pygame.image.load("images/player/puzi4.PNG"),
+                            pygame.image.load("images/player/puzi5.PNG"),
+                            pygame.image.load("images/player/puzi4.PNG")]
+            
+        self.images = self.pistolImages
         self.changed = False
         self.frame = 0
         self.maxFrame = len(self.images) - 1
@@ -40,11 +43,10 @@ class Player(pygame.sprite.Sprite):
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
         self.gun = "pistol"
+        
         self.maxPistolCount = 100000000
-        self.pistolCoolDown = 0
         self.pistolCoolDownMax = 50
         self.pistoldelay = 5
-        self.uziCount = 0
         self.maxUziCount = 100000000
         self.uziCoolDown = 0
         self.uziCoolDownMax = 50
@@ -75,6 +77,12 @@ class Player(pygame.sprite.Sprite):
             self.uziCoolDown = self.uziCoolDownMax
             return [Uzi(self)]
         return []
+        if atk == "shotgun" and self.uziCoolDown == 0:
+            self.uziing = True
+            self.uziCoolDown = self.uziCoolDownMax
+            return [Uzi(self)]
+        return []
+        
         
         
     def move(self):
@@ -146,12 +154,14 @@ class Player(pygame.sprite.Sprite):
     def changeGun(self, kind):
         if kind == "pistol":
             self.gun = "pistol"
-            self.image = self.pistolimage
+            self.images = self.pistolImages
         elif kind == "uzi":
             self.gun = "uzi"
-            self.image = self.uziimage
+            self.images = self.uziImages
         elif kind == "shotgun":
             self.gun = "shotgun"
-            self.image = self.shotgunimage
+            self.images = self.shotgunImages
+        self.maxFrame = len(self.images) - 1
+        self.frame = 0
 
 

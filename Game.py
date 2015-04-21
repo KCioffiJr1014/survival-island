@@ -54,9 +54,9 @@ Player.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
-PistolBullet.containers = (all, PistolBullets)
-UziBullet.containers = (all, UziBullets)
-ShotgunBullet.containers = (all, ShotgunBullets)
+PistolBullet.containers = (all, pistolBullets)
+UziBullet.containers = (all, uziBullets)
+ShotgunBullet.containers = (all, shotgunBullets)
 Crosshair.containers = (all, crosshairs)
 HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
@@ -145,6 +145,7 @@ while True:
                     player.go("left")
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
+
                     print "Pistol"
                 elif event.key == pygame.K_2:
                     player.changeGun("uzi")
