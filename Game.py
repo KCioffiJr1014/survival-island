@@ -9,10 +9,13 @@ from Level import Level
 from Block import Block
 from Enemy import Enemy
 from Villagers import Villager
-from Pistol import Pistol
-from Bullet import Bullet
+from PistolBullet import PistolBullet
+from UziBullet import UziBullet
+from ShotgunBullet import ShotgunBullet
+#from Bullet import Bullet
 from Crosshair import Crosshair
 from Health import HealthBar
+
 
 pygame.init()
 
@@ -34,12 +37,14 @@ bgRect = bgImage.get_rect()
 
 players = pygame.sprite.Group()
 enemys = pygame.sprite.Group()
-pistols = pygame.sprite.Group()
+pistolBullets = pygame.sprite.Group()
+uziBullets = pygame.sprite.Group()
+shotgunBullets = pygame.sprite.Group()
 defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
-bullets = pygame.sprite.Group()
+#bullets = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
 healthbars = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
@@ -49,8 +54,9 @@ Player.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
-Pistol.containers = (all, pistols)
-Bullet.containers = (all, bullets)
+PistolBullet.containers = (all, PistolBullets)
+UziBullet.containers = (all, UziBullets)
+ShotgunBullet.containers = (all, ShotgunBullets)
 Crosshair.containers = (all, crosshairs)
 HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
@@ -188,7 +194,14 @@ while True:
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
 
-        bulletHitEnemys = pygame.sprite.groupcollide(bullets, enemys, True, True)
+        
+        pistolBulletHitEnemys = pygame.sprite.groupcollide(pistolBullets, enemys, True, True)
+        
+        uziBulletHitEnemys = pygame.sprite.groupcollide(uziBullets, enemys, True, True)
+        
+        shotgunBulletHitEnemys = pygame.sprite.groupcollide(shotgunBullets, enemys, True, True)
+        
+        
     
         playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
         

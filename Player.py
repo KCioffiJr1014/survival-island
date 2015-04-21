@@ -1,5 +1,7 @@
 import pygame, sys, math
-from Bullet import Bullet
+from PistolBullet import PistolBullet
+from UziBullet import UziBullet
+from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
 from Health import HealthBar
 
@@ -37,13 +39,11 @@ class Player(pygame.sprite.Sprite):
         self.pistolimage = pygame.image.load("images/player/ppist.PNG")
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
-        self.pistoling = False
-        self.pistolCount = 0
+        self.gun = "pistol"
         self.maxPistolCount = 100000000
         self.pistolCoolDown = 0
         self.pistolCoolDownMax = 50
         self.pistoldelay = 5
-        self.uziing = False
         self.uziCount = 0
         self.maxUziCount = 100000000
         self.uziCoolDown = 0
@@ -93,7 +93,6 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.frame = 0
         
-        
         self.baseImage = self.images[self.frame]    
         mousePos = pygame.mouse.get_pos()
         mousePosPlayerX = mousePos[0] - self.rect.center[0]
@@ -136,14 +135,23 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self, option=None):
         if option == None:
-            return Bullet(self.rect.center, self.angle)
+            if self.gun == "pistol":
+                return PistolBullet(self.rect.center, self.angle)
+            elif self.gun == "uzi":
+                return UziBullet(self.rect.center, self.angle)
+            elif self.gun == "shotgun":
+                return ShotgunBullet(self.rect.center, self.angle)
+            
             
     def changeGun(self, kind):
         if kind == "pistol":
+            self.gun = "pistol"
             self.image = self.pistolimage
         elif kind == "uzi":
+            self.gun = "uzi"
             self.image = self.uziimage
         elif kind == "shotgun":
+            self.gun = "shotgun"
             self.image = self.shotgunimage
 
 

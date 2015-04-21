@@ -1,6 +1,6 @@
 import math,sys,pygame
 
-class Bullet(pygame.sprite.Sprite):
+class ShotgunBullet(pygame.sprite.Sprite):
     def __init__(self, pos, angle):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.baseImage = pygame.image.load("images/projectiles/sbullet.PNG")
@@ -43,7 +43,8 @@ class Bullet(pygame.sprite.Sprite):
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
-    #def BulletChange(self, kind):
+        
+    
         
         
     
