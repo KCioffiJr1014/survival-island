@@ -1,5 +1,4 @@
 import pygame, math
-from Default import Default
 
 class Villager(pygame.sprite.Sprite):
 	def __init__(self, image, speed = [0,0], pos = [0,0]):
@@ -23,11 +22,8 @@ class Villager(pygame.sprite.Sprite):
 		self = args[0]
 		width = args[1]
 		height = args[2]
-		self.didBounceX = False
-		self.didBounceY = False
 		self.speed = [self.speedx, self.speedy]
 		self.move()
-		self.collideWall(width, height)
 		
 	def move(self):
 		self.rect = self.rect.move(self.speed)
