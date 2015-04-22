@@ -12,7 +12,6 @@ from Villagers import Villager
 from PistolBullet import PistolBullet
 from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
-#from Bullet import Bullet
 from Crosshair import Crosshair
 from Health import HealthBar
 
@@ -44,7 +43,6 @@ defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
-#bullets = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
 healthbars = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()

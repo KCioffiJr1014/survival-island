@@ -43,17 +43,29 @@ class Player(pygame.sprite.Sprite):
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
         self.gun = "pistol"
-        
-        self.maxPistolCount = 100000000
+        self.maxPistolammo = 12
         self.pistolCoolDownMax = 50
-        self.pistoldelay = 5
-        self.maxUziCount = 100000000
+        self.pistoldelay = 2
+        self.Pistolammo = 8
+        self.Pistoldamage = 15
+        self.maxShotgunammo = 8
+        self.Uzigunammo = 8
+        self.maxUziCount = 20
         self.uziCoolDown = 0
         self.uziCoolDownMax = 50
-        self.uzidelay = 5
-        self.damage = 40
-        self.health = 250
-        self.maxHealth = 250
+        self.uzidelay = 4
+        self.Uzidamage = 25
+        self.pistoldamage = 10
+        self.maxShotgunammo = 8
+        self.Shotgunammo = 8
+        self.shotgundamage = 5
+        self.shotgunCoolDown = 0
+        self.shotgunCoolDownMax = 50
+        self.shotgundelay = 8
+        self.shotgundamage = 50
+        
+        self.health = 200
+        self.maxHealth = 200
         self.nodamage = 0
         self.living = True
         
