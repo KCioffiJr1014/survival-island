@@ -12,10 +12,8 @@ class PistolBullet(pygame.sprite.Sprite):
         rot_rect.center = rot_image.get_rect().center
         rot_image = rot_image.subsurface(rot_rect)
         self.image = rot_image 
-        #x = math.cos(math.radians(self.angle)) + 15 + pos[0]
-        x = pos[0]
-        #y = -math.sin(math.radians(self.angle)) + 50 + pos[1]
-        y = pos[1]
+        x = pos[0] + (math.cos(math.radians(self.angle - 35)) * math.sqrt(3529))
+        y = pos[1] + (-math.sin(math.radians(self.angle - 35)) * math.sqrt(3529))
         print angle, pos, [x,y]
         self.place([x,y])    
         self.living = True
