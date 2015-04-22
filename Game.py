@@ -162,7 +162,9 @@ while True:
                         fullscreen = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    b = player.shoot()
+                    player.shoot()
+                if event.button == 2:
+                    player.gunReload()
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:

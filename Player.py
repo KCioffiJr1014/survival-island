@@ -43,26 +43,29 @@ class Player(pygame.sprite.Sprite):
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
         self.gun = "pistol"
-        self.maxPistolammo = 12
-        self.pistolCoolDownMax = 50
-        self.pistoldelay = 2
-        self.Pistolammo = 8
-        self.Pistoldamage = 15
-        self.maxShotgunammo = 8
-        self.Uzigunammo = 8
-        self.maxUziCount = 20
-        self.uziCoolDown = 0
-        self.uziCoolDownMax = 50
-        self.uzidelay = 4
-        self.Uzidamage = 25
-        self.pistoldamage = 10
-        self.maxShotgunammo = 8
-        self.Shotgunammo = 8
+        self.shooting = False
+        self.reloading = False
+        self.shootDelay = 0
+        self.gunReload = 0
+        
+        self.maxPistolAmmo = 12
+        self.pistolAmmo = 12
+        self.pistolReloadMax = 15
+        self.pistolDelayMax = 2
+        self.pistolDamage = 15
+        
+        self.maxUziAmmo = 20
+        self.uziAmmo = 20
+        self.uziReloadMax = 50
+        self.uziDelayMax = 4
+        self.uzidamage = 25
+        
+        self.maxShotgunAmmo = 8
+        self.shotgunAmmo = 8
         self.shotgundamage = 5
-        self.shotgunCoolDown = 0
-        self.shotgunCoolDownMax = 50
-        self.shotgundelay = 8
-        self.shotgundamage = 50
+        self.shotgunReloadMax = 50
+        self.shotgunDelayMax = 8
+        self.shotgunDamage = 50
         
         self.health = 200
         self.maxHealth = 200
@@ -76,26 +79,17 @@ class Player(pygame.sprite.Sprite):
         height = args[2]
         self.move()
         self.animate()
-        self.changed = False
+        self.changed = False 
         
-    def attack(self, atk):
-        if atk == "pistol" and self.pistolCoolDown == 0:
-            self.pistoling = True
-            self.pistolCoolDown = self.pistolCoolDownMax
-            return [Pistol(self)]
-        return []
-        if atk == "uzi" and self.uziCoolDown == 0:
-            self.uziing = True
-            self.uziCoolDown = self.uziCoolDownMax
-            return [Uzi(self)]
-        return []
-        if atk == "shotgun" and self.uziCoolDown == 0:
-            self.uziing = True
-            self.uziCoolDown = self.uziCoolDownMax
-            return [Uzi(self)]
-        return []
-        
-        
+        if self.shooting:
+            if ((self.gun == "pistol" and self.shootDelay < self.pistolDelayMax)
+                or (self.gun == "uzi" and self.shootDelay < self.uziDelayMax)
+                or (self.gun == "shotgun" and self.shootDelay < self.shotgunDelayMax)):
+                    self.shootDelay += 1
+            else:
+                self.shootDelay = 0
+                self.shooting = False
+                
         
     def move(self):
         self.speed = [self.speedx, self.speedy]
@@ -154,26 +148,39 @@ class Player(pygame.sprite.Sprite):
             self.health = self.maxHealth
 
     def shoot(self, option=None):
-        if option == None:
+        if option == None and not self.shooting and not self.reloading:
             if self.gun == "pistol":
-                return PistolBullet(self.rect.center, self.angle)
+                if self.pistolAmmo > 0:
+                    self.pistolAmmo -= 1
+                    self.shootDelay = 1
+                    self.shooting = True
+                    return PistolBullet(self.rect.center, self.angle)
             elif self.gun == "uzi":
-                return UziBullet(self.rect.center, self.angle)
+                if self.uziAmmo > 0:
+                    self.uziAmmo -= 1
+                    self.shootDelay = 1
+                    self.shooting = True
+                    return UziBullet(self.rect.center, self.angle)
             elif self.gun == "shotgun":
-                return ShotgunBullet(self.rect.center, self.angle)
+                if self.shotgunAmmo > 0:
+                    self.shotgunAmmo -= 1
+                    self.shootDelay = 1
+                    self.shooting = True
+                    return ShotgunBullet(self.rect.center, self.angle)
             
             
     def changeGun(self, kind):
-        if kind == "pistol":
-            self.gun = "pistol"
-            self.images = self.pistolImages
-        elif kind == "uzi":
-            self.gun = "uzi"
-            self.images = self.uziImages
-        elif kind == "shotgun":
-            self.gun = "shotgun"
-            self.images = self.shotgunImages
-        self.maxFrame = len(self.images) - 1
-        self.frame = 0
+        if not self.shooting and not self.reloading:
+            if kind == "pistol":
+                self.gun = "pistol"
+                self.images = self.pistolImages
+            elif kind == "uzi":
+                self.gun = "uzi"
+                self.images = self.uziImages
+            elif kind == "shotgun":
+                self.gun = "shotgun"
+                self.images = self.shotgunImages
+            self.maxFrame = len(self.images) - 1
+            self.frame = 0
 
 
