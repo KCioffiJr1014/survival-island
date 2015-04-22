@@ -50,20 +50,20 @@ class Player(pygame.sprite.Sprite):
         
         self.maxPistolAmmo = 12
         self.pistolAmmo = 12
-        self.pistolReloadMax = 15
+        self.pistolReloadMax = 30
         self.pistolDelayMax = 2
         self.pistolDamage = 15
         
         self.maxUziAmmo = 20
         self.uziAmmo = 20
-        self.uziReloadMax = 50
+        self.uziReloadMax = 60
         self.uziDelayMax = 4
         self.uzidamage = 25
         
         self.maxShotgunAmmo = 8
         self.shotgunAmmo = 8
         self.shotgundamage = 5
-        self.shotgunReloadMax = 50
+        self.shotgunReloadMax = 120
         self.shotgunDelayMax = 8
         self.shotgunDamage = 50
         
@@ -80,7 +80,7 @@ class Player(pygame.sprite.Sprite):
         self.move()
         self.animate()
         self.changed = False 
-        
+        self.collideWall = args[3]
         if self.shooting:
             if ((self.gun == "pistol" and self.shootDelay < self.pistolDelayMax)
                 or (self.gun == "uzi" and self.shootDelay < self.uziDelayMax)
@@ -89,6 +89,15 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.shootDelay = 0
                 self.shooting = False
+        if self.reloading:
+            print self.gunReload
+            if ((self.gun == "pistol" and self.gunReload < self.pistolReloadMax)
+                or (self.gun == "uzi" and self.gunReload < self.uziReloadMax)
+                or (self.gun == "shotgun" and self.gunReload < self.shotgunReloadMax)):
+                    self.gunReload += 1
+            else:
+                self.gunReload = 0
+                self.reloading = False
                 
         
     def move(self):
@@ -146,6 +155,18 @@ class Player(pygame.sprite.Sprite):
             self.living = False
         elif self.health >= self.maxHealth:
             self.health = self.maxHealth
+            
+    def collideWall(self, width, height):
+        if not self.didBounceX:
+            #print "trying to hit Wall"
+            if self.rect.left < 0 or self.rect.right > width:
+                self.speedx = 0
+                self.didBounceX = True
+                #print "hit xWall"
+        if not self.didBounceY:
+            if self.rect.top < 0 or self.rect.bottom > height:
+                self.speedy = 0
+                self.didBounceY = True
 
     def shoot(self, option=None):
         if option == None and not self.shooting and not self.reloading:
@@ -154,6 +175,7 @@ class Player(pygame.sprite.Sprite):
                     self.pistolAmmo -= 1
                     self.shootDelay = 1
                     self.shooting = True
+                
                     return PistolBullet(self.rect.center, self.angle)
             elif self.gun == "uzi":
                 if self.uziAmmo > 0:
@@ -182,5 +204,17 @@ class Player(pygame.sprite.Sprite):
                 self.images = self.shotgunImages
             self.maxFrame = len(self.images) - 1
             self.frame = 0
-
-
+        
+    def reload(self):
+        if self.gun == "pistol":
+            self.gunReload = 1
+            self.reloading = True
+            self.pistolAmmo = self.maxPistolAmmo
+        elif self.gun == "uzi":
+            self.gunReload = 1
+            self.reloading = True
+            self.uziAmmo = self.maxUziAmmo
+        elif self.gun == "shotgun":
+            self.gunReload = 1
+            self.reloading = True
+            self.shotgunAmmo = self.maxShotgunAmmo

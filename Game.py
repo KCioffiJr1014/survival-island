@@ -115,8 +115,9 @@ while True:
     healthbar = HealthBar([width - 75, 75])
     
     Enemys = []
-    maxEnemy = 5
+    maxEnemy = 25
     Enemys += [Enemy("images/enemy/pr1.png", [1, 2], [100, 125])]
+    
     
     
     timer = Score([115, height - 25], " ", 36)
@@ -163,8 +164,9 @@ while True:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     player.shoot()
-                if event.button == 2:
-                    player.gunReload()
+                if event.button == 3:
+                    player.reload()
+                    print "reload me"
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
