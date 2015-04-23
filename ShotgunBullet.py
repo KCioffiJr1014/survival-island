@@ -14,7 +14,7 @@ class ShotgunBullet(pygame.sprite.Sprite):
         self.image = rot_image 
         x = pos[0] + (math.cos(math.radians(self.angle - 26)) * math.sqrt(5450))
         y = pos[1] + (-math.sin(math.radians(self.angle - 26)) * math.sqrt(5450))
-        print angle, pos, [x,y]
+        #print angle, pos, [x,y]
         self.place([x,y])    
         self.living = True
         self.speedx = math.cos(math.radians(self.angle))*50

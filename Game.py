@@ -14,6 +14,7 @@ from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
 from Health import HealthBar
+from ShotgunAmmo import ShotgunAmmo
 
 
 pygame.init()
@@ -45,6 +46,7 @@ backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
 healthbars = pygame.sprite.Group()
+ShotgunAmmos = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Default.containers = (all, defaults)
@@ -58,6 +60,7 @@ ShotgunBullet.containers = (all, shotgunBullets)
 Crosshair.containers = (all, crosshairs)
 HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
+ShotgunAmmo.containers = (all, ShotgunAmmos)
 
 
 
@@ -112,7 +115,8 @@ while True:
     
     
     player = Player([width/2, height/2])
-    healthbar = HealthBar([width - 75, 75])
+    #healthbar = HealthBar([115, -200])
+    shotgunAmmo = ShotgunAmmo([100, 550])
     
     Enemys = []
     maxEnemy = 25
@@ -120,9 +124,9 @@ while True:
     
     
     
-    timer = Score([115, height - 25], " ", 36)
-    timerWait = 0
-    timerWaitMax = 6
+    #timer = Score([115, height - 25], " ", 36)
+    #timerWait = 0
+    #timerWaitMax = 6
     
     
     
@@ -145,28 +149,26 @@ while True:
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
 
-                    print "Pistol"
+                    
                 elif event.key == pygame.K_2:
                     player.changeGun("uzi")
-                    print "Uzi"
+                    
                 elif event.key == pygame.K_3:
                     player.changeGun("shotgun")
-                    print "Shotgun"
+                
                 if event.key == pygame.K_RETURN :
-                    print event.mod, pygame.KMOD_RALT
-                if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:
-                    if fullscreen:
-                        pygame.display.set_mode(size)
-                        fullscreen = True
-                    else:
-                        pygame.display.set_mode(size, pygame.FULLSCREEN)
-                        fullscreen = True
+                    if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:
+                        if fullscreen:
+                            pygame.display.set_mode(size)
+                            fullscreen = True
+                        else:
+                            pygame.display.set_mode(size, pygame.FULLSCREEN)
+                            fullscreen = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     player.shoot()
                 if event.button == 3:
                     player.reload()
-                    print "reload me"
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
@@ -189,11 +191,11 @@ while True:
                                          [random.randint(100, width - 400), random.randint(100, height - 400)])
                      
                           
-        if timerWait < timerWaitMax:
-            timerWait += 1
-        else:
-            timerWait = 0
-            timer.increaseScore(.00001)
+        #if timerWait < timerWaitMax:
+        #timerWait += 1
+        #else:
+        #    timerWait = 0
+        #    timer.increaseScore(.00001)
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
 
@@ -208,7 +210,7 @@ while True:
     
         playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
         
-        enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, True)
+        enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
     
     
         '''for healthbar in enemyHitHealth:
