@@ -4,13 +4,13 @@ class ShotgunAmmo(pygame.sprite.Sprite):
     def __init__(self, position):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = []
-        self.images += [pygame.image.load("images/health/65%.png")]
-        self.images += [pygame.image.load("images/health/70%.png")]
-        self.images += [pygame.image.load("images/health/75%.png")]
-        self.images += [pygame.image.load("images/health/80%.png")]
-        self.images += [pygame.image.load("images/health/85%.png")]
-        self.images += [pygame.image.load("images/health/90%.png")]
-        self.images += [pygame.image.load("images/health/95%.png")]
+        self.images += [pygame.image.load("images/ammo/shot1.png")]
+        self.images += [pygame.image.load("images/ammo/shot2.png")]
+        self.images += [pygame.image.load("images/ammo/shot3.png")]
+        self.images += [pygame.image.load("images/ammo/shot4.png")]
+        self.images += [pygame.image.load("images/ammo/shot5.png")]
+        self.images += [pygame.image.load("images/ammo/shot6.png")]
+        self.images += [pygame.image.load("images/ammo/shot7.png")]
         self.images += [pygame.image.load("images/ammo/shot8.png")]
         self.maxFrame = len(self.images)-1
 #        self.surface = pygame.transform.scale(self.faces,(100,25))
