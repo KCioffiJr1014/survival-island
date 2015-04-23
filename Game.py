@@ -7,7 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-from Enemy import Enemyddddd
+from Enemy import Enemy
 from Villagers import Villager
 from PistolBullet import PistolBullet
 from UziBullet import UziBullet
