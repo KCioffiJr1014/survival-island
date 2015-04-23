@@ -7,13 +7,13 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-from Enemy import Enemy
+from Enemy import Enemyddddd
 from Villagers import Villager
 from PistolBullet import PistolBullet
 from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
-from Health import HealthBar
+#from Health import HealthBar
 from ShotgunAmmo import ShotgunAmmo
 
 
@@ -45,7 +45,7 @@ hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
-healthbars = pygame.sprite.Group()
+#healthbars = pygame.sprite.Group()
 ShotgunAmmos = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
@@ -58,7 +58,7 @@ PistolBullet.containers = (all, pistolBullets)
 UziBullet.containers = (all, uziBullets)
 ShotgunBullet.containers = (all, shotgunBullets)
 Crosshair.containers = (all, crosshairs)
-HealthBar.containers = (all, healthbars)
+#HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
 ShotgunAmmo.containers = (all, ShotgunAmmos)
 
@@ -116,7 +116,7 @@ while True:
     
     player = Player([width/2, height/2])
     #healthbar = HealthBar([115, -200])
-    shotgunAmmo = ShotgunAmmo([100, 550])
+    shotgunAmmo = ShotgunAmmo([150, 550])
     
     Enemys = []
     maxEnemy = 25
@@ -210,7 +210,7 @@ while True:
     
         playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
         
-        enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
+        #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
     
     
         '''for healthbar in enemyHitHealth:

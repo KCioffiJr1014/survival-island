@@ -1,5 +1,6 @@
 import pygame,math,sys,random
 
+
 class ShotgunAmmo(pygame.sprite.Sprite):
     def __init__(self, position):
         pygame.sprite.Sprite.__init__(self, self.containers)
@@ -9,7 +10,7 @@ class ShotgunAmmo(pygame.sprite.Sprite):
         self.images += [pygame.image.load("images/ammo/shot3.png")]
         self.images += [pygame.image.load("images/ammo/shot4.png")]
         self.images += [pygame.image.load("images/ammo/shot5.png")]
-        self.images += [pygame.image.load("images/ammo/shot6.png")]
+        self.images += [pygame.image.load("images/ammo/shot8.png")]
         self.images += [pygame.image.load("images/ammo/shot7.png")]
         self.images += [pygame.image.load("images/ammo/shot8.png")]
         self.maxFrame = len(self.images)-1
@@ -20,7 +21,10 @@ class ShotgunAmmo(pygame.sprite.Sprite):
         self.rect.center = position
         #if pygame.mixer:
         #    self.healthSound = pygame.mixer.Sound("health.wav")
+        #self.gun = "shotgun"
         
+        #self.shotgunAmmo = self.maxShotgunAmmo
+        #self.maxShotgunAmmo = 8
        
     def  __str__(self):
         return "I'm a Health Bar " + str(self.rect.center) + str(self.speed) + str(self.ammoing)
@@ -34,8 +38,9 @@ class ShotgunAmmo(pygame.sprite.Sprite):
         maxAmmo = args[4]
         
         percentAmmo = float(ammo)/float(maxAmmo)
+        #if self.shotgunAmmo > 0:
         if percentAmmo > .95:
-            self.frame = 5
+            self.frame = 8
         elif percentAmmo > .75:
             self.frame = 4
         elif percentAmmo > .50:
@@ -47,4 +52,7 @@ class ShotgunAmmo(pygame.sprite.Sprite):
         else:
             self.frame = 0
             self.living = False
-        self.image = self.images[self.frame]
+            self.image = self.images[self.frame]
+        
+        
+                    

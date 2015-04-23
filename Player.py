@@ -4,6 +4,7 @@ from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
 from Health import HealthBar
+from ShotgunAmmo import ShotgunAmmo
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
