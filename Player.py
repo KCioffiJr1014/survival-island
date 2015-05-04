@@ -128,7 +128,10 @@ class Player(pygame.sprite.Sprite):
         rot_rect.center = rot_image.get_rect().center
         rot_image = rot_image.subsurface(rot_rect)
         self.image = rot_image
-        
+    
+    def collideBlock(self, block):
+        self.speedx = 0
+        self.speedy = 0
     
     def go(self, direction):
         if direction == "up":

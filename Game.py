@@ -211,6 +211,10 @@ while True:
         playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
+        
+    for player in playersHitBlocks:
+        for block in playersHitBlocks[player]:
+            player.collideBlock(block)
     
     
         '''for healthbar in enemyHitHealth:
