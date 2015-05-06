@@ -40,6 +40,11 @@ class Player(pygame.sprite.Sprite):
         self.maxSpeed = 10
         self.speedx = 0
         self.speedy = 0
+        mousePos = pygame.mouse.get_pos()
+        mousePosPlayerX = mousePos[0] - self.rect.center[0]
+        mousePosPlayerY = mousePos[1] - self.rect.center[1]
+        self.angle = ((math.atan2(mousePosPlayerY, mousePosPlayerX))/math.pi)*180
+        self.angle = -self.angle
         self.pistolimage = pygame.image.load("images/player/ppist.PNG")
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
@@ -129,7 +134,7 @@ class Player(pygame.sprite.Sprite):
         rot_image = rot_image.subsurface(rot_rect)
         self.image = rot_image
     
-    def collideBlock(self, block):
+    def collideHardBlock(self, block):
         self.speedx = 0
         self.speedy = 0
     
@@ -179,20 +184,19 @@ class Player(pygame.sprite.Sprite):
                     self.pistolAmmo -= 1
                     self.shootDelay = 1
                     self.shooting = True
-                
-                    return PistolBullet(self.rect.center, self.angle)
+                return PistolBullet(self.rect.center, self.angle)
             elif self.gun == "uzi":
                 if self.uziAmmo > 0:
                     self.uziAmmo -= 1
                     self.shootDelay = 1
                     self.shooting = True
-                    return UziBullet(self.rect.center, self.angle)
+                return UziBullet(self.rect.center, self.angle)
             elif self.gun == "shotgun":
                 if self.shotgunAmmo > 0:
                     self.shotgunAmmo -= 1
                     self.shootDelay = 1
                     self.shooting = True
-                    return ShotgunBullet(self.rect.center, self.angle)
+                return ShotgunBullet(self.rect.center, self.angle)
             
             
     def changeGun(self, kind):
