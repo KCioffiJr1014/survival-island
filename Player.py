@@ -40,11 +40,11 @@ class Player(pygame.sprite.Sprite):
         self.maxSpeed = 10
         self.speedx = 0
         self.speedy = 0
-        mousePos = pygame.mouse.get_pos()
+        '''mousePos = pygame.mouse.get_pos()
         mousePosPlayerX = mousePos[0] - self.rect.center[0]
         mousePosPlayerY = mousePos[1] - self.rect.center[1]
         self.angle = ((math.atan2(mousePosPlayerY, mousePosPlayerX))/math.pi)*180
-        self.angle = -self.angle
+        self.angle = -self.angle'''
         self.pistolimage = pygame.image.load("images/player/ppist.PNG")
         self.uziimage = pygame.image.load("images/player/puzi.PNG")
         self.shotgunimage = pygame.image.load("images/player/pshot.PNG")
@@ -85,9 +85,9 @@ class Player(pygame.sprite.Sprite):
         height = args[2]
         self.move()
         self.animate()
-        self.changed = False 
-        self.collideWall = args[3]
+        self.changed = False
         if self.shooting:
+            print self.shooting
             if ((self.gun == "pistol" and self.shootDelay < self.pistolDelayMax)
                 or (self.gun == "uzi" and self.shootDelay < self.uziDelayMax)
                 or (self.gun == "shotgun" and self.shootDelay < self.shotgunDelayMax)):
