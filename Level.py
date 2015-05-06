@@ -2,11 +2,14 @@ import pygame, sys, math
 
 from Block import Block
 
+from HardBlock import HardBlock
+
 
 class Level():
-    def __init__(self, screenSize, blockSize):
+    def __init__(self, screenSize, blockSize, hardblockSize):
         self.screenSize = screenSize
         self.blockSize = blockSize
+        self.hardblockSize = hardblockSize
         self.level = ""
         
     def loadLevel(self, level):
@@ -37,12 +40,12 @@ class Level():
                 elif c =="+":
                     Block("maps/grasssand.png", [x*self.blockSize,y*self.blockSize])
                 elif c =="-":
-                    Block("maps/rock.png", [x*self.blockSize,y*self.blockSize])
+                    HardBlock("maps/rock.png", [x*self.hardblockSize,y*self.hardblockSize])
 
 
 
 
 
-\
+
 
 

@@ -45,6 +45,7 @@ defaults = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
+hardblocks = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
 #healthbars = pygame.sprite.Group()
 ShotgunAmmos = pygame.sprite.Group()
@@ -54,6 +55,7 @@ Default.containers = (all, defaults)
 Player.containers = (all, players)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
+HardBlock.containers = (all, hardblocks)
 Score.containers = (all, hudItems)
 PistolBullet.containers = (all, pistolBullets)
 UziBullet.containers = (all, uziBullets)
@@ -110,7 +112,7 @@ while True:
     
     
     
-    level = Level(size, 50)
+    level = Level(size, 50, 50)
     level.loadLevel("1")
     
     
