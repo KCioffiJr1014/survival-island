@@ -7,6 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+from HardBlock import HardBlock
 from Enemy import Enemy
 from Villagers import Villager
 from PistolBullet import PistolBullet
@@ -198,7 +199,8 @@ while True:
         #    timer.increaseScore(.00001)
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
-
+    
+        #playersHitHardBlocks = pygame.sprite.groupcollide(players, Hardblocks, False, False)
         
         pistolBulletHitEnemys = pygame.sprite.groupcollide(pistolBullets, enemys, True, True)
         
@@ -207,14 +209,12 @@ while True:
         shotgunBulletHitEnemys = pygame.sprite.groupcollide(shotgunBullets, enemys, True, True)
         
         
-    
-        playerHitWalls = pygame.sprite.groupcollide(players, backgrounds, False, False)
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
         
-    for player in playersHitBlocks:
-        for block in playersHitBlocks[player]:
-            player.collideBlock(block)
+        '''for player in playersHitHardBlocks:
+            for hardblock in playersHitHardBlocks[player]:
+                player.collideHardBlock(hardblock)'''
     
     
         '''for healthbar in enemyHitHealth:
