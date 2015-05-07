@@ -15,7 +15,7 @@ from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
 #from Health import HealthBar
-from ShotgunAmmo import ShotgunAmmo
+from AmmoHUD import Ammo
 
 
 pygame.init()
@@ -48,7 +48,6 @@ blocks = pygame.sprite.Group()
 hardblocks = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
 #healthbars = pygame.sprite.Group()
-ShotgunAmmos = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Default.containers = (all, defaults)
@@ -63,7 +62,7 @@ ShotgunBullet.containers = (all, shotgunBullets)
 Crosshair.containers = (all, crosshairs)
 #HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
-ShotgunAmmo.containers = (all, ShotgunAmmos)
+Ammo.containers = (all, hudItems)
 
 
 
@@ -119,7 +118,7 @@ while True:
     
     player = Player([width/2, height/2])
     #healthbar = HealthBar([115, -200])
-    shotgunAmmo = ShotgunAmmo([150, 550])
+    shotgunAmmo = Ammo([150, 550])
     
     Enemys = []
     maxEnemy = 25
@@ -229,7 +228,9 @@ while True:
                 score.increaseScore(1)'''
                 
         
-        all.update(width, height, player.health, player.maxHealth)
+        all.update(width, height, 
+                   player.health, player.maxHealth,
+                   player.currentAmmo, player.currentMaxAmmo, player.gun)
         
         
         
