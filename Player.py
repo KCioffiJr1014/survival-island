@@ -4,7 +4,7 @@ from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
 from Crosshair import Crosshair
 from Health import HealthBar
-from ShotgunAmmo import ShotgunAmmo
+from AmmoHUD import Ammo
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
@@ -72,6 +72,9 @@ class Player(pygame.sprite.Sprite):
         self.shotgunReloadMax = 120
         self.shotgunDelayMax = 8
         self.shotgunDamage = 50
+        
+        self.currentAmmo = self.pistolAmmo
+        self.currentMaxAmmo = self.maxPistolAmmo
         
         self.health = 200
         self.maxHealth = 200
@@ -182,21 +185,24 @@ class Player(pygame.sprite.Sprite):
             if self.gun == "pistol":
                 if self.pistolAmmo > 0:
                     self.pistolAmmo -= 1
+                    self.currentAmmo = self.pistolAmmo
                     self.shootDelay = 1
                     self.shooting = True
-                return PistolBullet(self.rect.center, self.angle)
+                    return PistolBullet(self.rect.center, self.angle)
             elif self.gun == "uzi":
                 if self.uziAmmo > 0:
                     self.uziAmmo -= 1
+                    self.currentAmmo = self.uziAmmo
                     self.shootDelay = 1
                     self.shooting = True
-                return UziBullet(self.rect.center, self.angle)
+                    return UziBullet(self.rect.center, self.angle)
             elif self.gun == "shotgun":
                 if self.shotgunAmmo > 0:
                     self.shotgunAmmo -= 1
+                    self.currentAmmo = self.shotgunAmmo
                     self.shootDelay = 1
                     self.shooting = True
-                return ShotgunBullet(self.rect.center, self.angle)
+                    return ShotgunBullet(self.rect.center, self.angle)
             
             
     def changeGun(self, kind):
@@ -204,12 +210,18 @@ class Player(pygame.sprite.Sprite):
             if kind == "pistol":
                 self.gun = "pistol"
                 self.images = self.pistolImages
+                self.currentAmmo = self.pistolAmmo
+                self.currentMaxAmmo = self.maxPistolAmmo
             elif kind == "uzi":
                 self.gun = "uzi"
                 self.images = self.uziImages
+                self.currentAmmo = self.uziAmmo
+                self.currentMaxAmmo = self.maxUziAmmo
             elif kind == "shotgun":
                 self.gun = "shotgun"
                 self.images = self.shotgunImages
+                self.currentAmmo = self.shotgunAmmo
+                self.currentMaxAmmo = self.maxShotgunAmmo
             self.maxFrame = len(self.images) - 1
             self.frame = 0
         
