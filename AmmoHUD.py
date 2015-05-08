@@ -15,13 +15,27 @@ class Ammo(pygame.sprite.Sprite):
                             pygame.image.load("images/ammo/shot7.png"),
                             pygame.image.load("images/ammo/shot8.png")]
                             
-        self.uziAmmoimages = [pygame.image.load("images/ammo/uzi1.png"),
-                            pygame.image.load("images/ammo/shot3.png"),
-                            pygame.image.load("images/ammo/shot4.png"),
-                            pygame.image.load("images/ammo/shot5.png"),
-                            pygame.image.load("images/ammo/shot8.png"),
-                            pygame.image.load("images/ammo/shot7.png"),
-                            pygame.image.load("images/ammo/uzi1.png")]
+        self.uziAmmoimages = [pygame.image.load("images/ammo/uzi0.png"),
+                            pygame.image.load("images/ammo/uzi1.png"),
+                            pygame.image.load("images/ammo/uzi2.png"),
+                            pygame.image.load("images/ammo/uzi3.png"),
+                            pygame.image.load("images/ammo/uzi4.png"),
+                            pygame.image.load("images/ammo/uzi5.png"),
+                            pygame.image.load("images/ammo/uzi6.png"),
+                            pygame.image.load("images/ammo/uzi7.png"),
+                            pygame.image.load("images/ammo/uzi8.png"),
+                            pygame.image.load("images/ammo/uzi9.png"),
+                            pygame.image.load("images/ammo/uzi10.png"),
+                            pygame.image.load("images/ammo/uzi11.png"),
+                            pygame.image.load("images/ammo/uzi12.png"),
+                            pygame.image.load("images/ammo/uzi13.png"),
+                            pygame.image.load("images/ammo/uzi14.png"),
+                            pygame.image.load("images/ammo/uzi15.png"),
+                            pygame.image.load("images/ammo/uzi16.png"),
+                            pygame.image.load("images/ammo/uzi17.png"),
+                            pygame.image.load("images/ammo/uzi18.png"),
+                            pygame.image.load("images/ammo/uzi19.png"),
+                            pygame.image.load("images/ammo/uzi20.png")]
                             
         self.images = self.shotgunAmmoimages
         self.maxFrame = len(self.images)-1
