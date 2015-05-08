@@ -1,4 +1,4 @@
-  import pygame, sys, math
+import pygame, sys, math
 
 from Block import Block
 
