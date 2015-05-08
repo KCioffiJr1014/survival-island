@@ -138,6 +138,9 @@ class Player(pygame.sprite.Sprite):
         self.image = rot_image
     
     def collideHardBlock(self, block):
+        self.speedx = -self.speedx
+        self.speedy = -self.speedy
+        self.move()
         self.speedx = 0
         self.speedy = 0
     

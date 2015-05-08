@@ -118,7 +118,7 @@ while True:
     
     player = Player([width/2, height/2])
     #healthbar = HealthBar([115, -200])
-    ammo = Ammo([100, 550])
+    ammo = Ammo([100, 500])
     
     
     Enemys = []
