@@ -118,7 +118,8 @@ while True:
     
     player = Player([width/2, height/2])
     #healthbar = HealthBar([115, -200])
-    shotgunAmmo = Ammo([150, 550])
+    ammo = Ammo([100, 550])
+    
     
     Enemys = []
     maxEnemy = 25
@@ -201,7 +202,7 @@ while True:
         
         playersHitEnemys = pygame.sprite.groupcollide(players, enemys, False, False)#True)
     
-        #playersHitHardBlocks = pygame.sprite.groupcollide(players, Hardblocks, False, False)
+        playersHitHardBlocks = pygame.sprite.groupcollide(players, hardblocks, False, False)
         
         pistolBulletHitEnemys = pygame.sprite.groupcollide(pistolBullets, enemys, True, True)
         
@@ -213,9 +214,9 @@ while True:
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
         
-        '''for player in playersHitHardBlocks:
+        for player in playersHitHardBlocks:
             for hardblock in playersHitHardBlocks[player]:
-                player.collideHardBlock(hardblock)'''
+                player.collideHardBlock(hardblock)
     
     
         '''for healthbar in enemyHitHealth:
