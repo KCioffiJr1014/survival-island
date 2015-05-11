@@ -12,6 +12,6 @@ class LevelChangeBlock(Block):
 
     def playerCollide(self, other):
         print "I'm going to ", self.newlev
-            return True
+        return True
         return False
     

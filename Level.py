@@ -1,8 +1,7 @@
 import pygame, sys, math
-
 from Block import Block
-
 from HardBlock import HardBlock
+from LevelChange import LevelChangeBlock
 
 
 class Level():
@@ -41,6 +40,14 @@ class Level():
                     Block("maps/grasssand.png", [x*self.blockSize,y*self.blockSize])
                 elif c =="-":
                     HardBlock("maps/rock.png", [x*self.hardblockSize,y*self.hardblockSize])
+                elif c =="c":
+                    HardBlock("maps/sand.png", [x*self.hardblockSize,y*self.hardblockSize])
+                elif c =="s":
+                    HardBlock("maps/grasssand.png", [x*self.hardblockSize,y*self.hardblockSize])
+                elif c =="r":
+                    HardBlock("maps/grass.png", [x*self.hardblockSize,y*self.hardblockSize])
+                '''elif c =="n":
+                    LevelChangeBlock("maps/grass.png", [x*self.blockSize,y*self.blockSize, newlev, c])'''
 
 
 
