@@ -51,8 +51,8 @@ class Ammo(pygame.sprite.Sprite):
                             pygame.image.load("images/ammo/pist11.png"),
                             pygame.image.load("images/ammo/pist12.png")]   
                             
-        self.swordAmmoimages = [pygame.image.load("images/player/pr2.png"),
-                            pygame.image.load("images/player/pr2.png")]
+        self.swordAmmoimages = [pygame.image.load("images/ammo/kammo.png"),
+                            pygame.image.load("images/ammo/kammo.png")]
         
         self.images = self.shotgunAmmoimages
         self.maxFrame = len(self.images)-1
