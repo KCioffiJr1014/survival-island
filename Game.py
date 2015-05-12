@@ -149,6 +149,8 @@ while True:
                     player.go("down")
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
+                elif event.key == pygame.K_p:
+                    sys.exit()
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
 
@@ -210,6 +212,11 @@ while True:
         
         shotgunBulletHitEnemys = pygame.sprite.groupcollide(shotgunBullets, enemys, True, True)
         
+        pistolBulletHitHardBlocks = pygame.sprite.groupcollide(pistolBullets, hardblocks, True, False)
+        
+        uziBulletHitHardBlocks = pygame.sprite.groupcollide(uziBullets, hardblocks, True, False)
+        
+        shotgunBulletHitHardBlocks = pygame.sprite.groupcollide(shotgunBullets, hardblocks, True, False)
         
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
