@@ -73,7 +73,7 @@ class Player(pygame.sprite.Sprite):
         self.shotgunAmmo = 8
         self.shotgundamage = 5
         self.shotgunReloadMax = 120
-        self.shotgunDelayMax = 8
+        self.shotgunDelayMax = 12
         self.shotgunDamage = 50
         
         self.maxSwordAmmo = 1

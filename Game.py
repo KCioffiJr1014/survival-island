@@ -154,6 +154,14 @@ while True:
                     player.go("left")
                 elif event.key == pygame.K_p:
                     sys.exit()
+                elif event.key == pygame.K_k:
+                    player.maxSpeed = 20
+                elif event.key == pygame.K_l:
+                    player.maxSpeed = 5
+                elif event.key == pygame.K_j:
+                    player.maxSpeed = 10
+                elif event.key == pygame.K_y:
+                    player.swordReloadMax = 15
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
                 elif event.key == pygame.K_2:
@@ -190,6 +198,9 @@ while True:
                     player.shoot("stop")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
+                elif event.key == pygame.K_n:
+                    player.swordReloadMax = 240
+                    
             
         if len(enemys) < maxEnemy:
             if random.randint(0, 1 * 60) == 0:
