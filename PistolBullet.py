@@ -17,8 +17,8 @@ class PistolBullet(pygame.sprite.Sprite):
         #print angle, pos, [x,y]
         self.place([x,y])    
         self.living = True
-        self.speedx = math.cos(math.radians(self.angle))*11
-        self.speedy = -math.sin(math.radians(self.angle))*11
+        self.speedx = math.cos(math.radians(self.angle))*45
+        self.speedy = -math.sin(math.radians(self.angle))*45
         self.speed = [self.speedx, self.speedy] 
        
         
