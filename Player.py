@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
                             pygame.image.load("images/player/puzi5.PNG"),
                             pygame.image.load("images/player/puzi4.PNG")]
                         
-        self.swordImages = [pygame.image.load("images/player/pr2.png")]
+        self.swordImages = [pygame.image.load("images/player/k1.png")]
             
         self.images = self.pistolImages
         self.changed = False

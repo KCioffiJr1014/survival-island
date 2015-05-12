@@ -3,7 +3,7 @@ import math,sys,pygame
 class Sword(pygame.sprite.Sprite):
     def __init__(self, pos, angle):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.baseImage = pygame.image.load("images/player/pr2.PNG")
+        self.baseImage = pygame.image.load("images/player/k2.PNG")
         
         self.rect = self.baseImage.get_rect()
         self.angle = angle
@@ -32,6 +32,7 @@ class Sword(pygame.sprite.Sprite):
         self = args[0]
         width = args[1]
         height = args[2]
+        self.move()
         
         
     def distance(self, pt):
