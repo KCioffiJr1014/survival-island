@@ -220,6 +220,8 @@ while True:
         
         shotgunBulletHitHardBlocks = pygame.sprite.groupcollide(shotgunBullets, hardblocks, True, False)
         
+        swordHitEnemys = pygame.sprite.groupcollide(swords, enemys, False, True)
+        
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
         
