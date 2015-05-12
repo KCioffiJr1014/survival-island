@@ -13,6 +13,7 @@ from Villagers import Villager
 from PistolBullet import PistolBullet
 from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
+from Sword import Sword
 from Crosshair import Crosshair
 #from Health import HealthBar
 from AmmoHUD import Ammo
@@ -47,6 +48,7 @@ backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 hardblocks = pygame.sprite.Group()
 crosshairs = pygame.sprite.Group()
+swords = pygame.sprite.Group()
 #healthbars = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
@@ -59,6 +61,7 @@ Score.containers = (all, hudItems)
 PistolBullet.containers = (all, pistolBullets)
 UziBullet.containers = (all, uziBullets)
 ShotgunBullet.containers = (all, shotgunBullets)
+Sword.containers = (all, swords)
 Crosshair.containers = (all, crosshairs)
 #HealthBar.containers = (all, healthbars)
 Enemy.containers = (all, enemys)
@@ -153,13 +156,12 @@ while True:
                     sys.exit()
                 elif event.key == pygame.K_1:
                     player.changeGun("pistol")
-
-                    
                 elif event.key == pygame.K_2:
                     player.changeGun("uzi")
-                    
                 elif event.key == pygame.K_3:
                     player.changeGun("shotgun")
+                elif event.key == pygame.K_4:
+                    player.changeGun("sword")
                 
                 if event.key == pygame.K_RETURN :
                     if event.mod & pygame.KMOD_RALT or event.mod & pygame.KMOD_LALT:

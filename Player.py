@@ -2,6 +2,7 @@ import pygame, sys, math
 from PistolBullet import PistolBullet
 from UziBullet import UziBullet
 from ShotgunBullet import ShotgunBullet
+from Sword import Sword
 from Crosshair import Crosshair
 from Health import HealthBar
 from AmmoHUD import Ammo
@@ -27,6 +28,8 @@ class Player(pygame.sprite.Sprite):
                             pygame.image.load("images/player/puzi4.PNG"),
                             pygame.image.load("images/player/puzi5.PNG"),
                             pygame.image.load("images/player/puzi4.PNG")]
+                        
+        self.swordImages = [pygame.image.load("images/player/pr2.png")]
             
         self.images = self.pistolImages
         self.changed = False
@@ -73,6 +76,14 @@ class Player(pygame.sprite.Sprite):
         self.shotgunDelayMax = 8
         self.shotgunDamage = 50
         
+        self.maxSwordAmmo = 1
+        self.swordAmmo = 1
+        self.sworddamage = 5
+        self.swordReloadMax = 12
+        self.swordDelayMax = 8
+        self.swordDamage = 50
+        
+        
         self.currentAmmo = self.pistolAmmo
         self.currentMaxAmmo = self.maxPistolAmmo
         
@@ -93,7 +104,8 @@ class Player(pygame.sprite.Sprite):
             print self.shooting
             if ((self.gun == "pistol" and self.shootDelay < self.pistolDelayMax)
                 or (self.gun == "uzi" and self.shootDelay < self.uziDelayMax)
-                or (self.gun == "shotgun" and self.shootDelay < self.shotgunDelayMax)):
+                or (self.gun == "shotgun" and self.shootDelay < self.shotgunDelayMax)
+                or (self.gun == "sword" and self.shootDelay < self.swordDelayMax)):
                     self.shootDelay += 1
             else:
                 self.shootDelay = 0
@@ -102,7 +114,8 @@ class Player(pygame.sprite.Sprite):
             print self.gunReload
             if ((self.gun == "pistol" and self.gunReload < self.pistolReloadMax)
                 or (self.gun == "uzi" and self.gunReload < self.uziReloadMax)
-                or (self.gun == "shotgun" and self.gunReload < self.shotgunReloadMax)):
+                or (self.gun == "shotgun" and self.gunReload < self.shotgunReloadMax)
+                or (self.gun == "sword" and self.gunReload < self.swordReloadMax)):
                     self.gunReload += 1
             else:
                 self.gunReload = 0
@@ -206,6 +219,13 @@ class Player(pygame.sprite.Sprite):
                     self.shootDelay = 1
                     self.shooting = True
                     return ShotgunBullet(self.rect.center, self.angle)
+            elif self.gun == "sword":
+                if self.swordAmmo > 0:
+                    self.swordAmmo -= 1
+                    self.currentAmmo = self.swordAmmo
+                    self.shootDelay = 1
+                    self.shooting = True
+                    return Sword(self.rect.center, self.angle)
             
             
     def changeGun(self, kind):
@@ -225,6 +245,11 @@ class Player(pygame.sprite.Sprite):
                 self.images = self.shotgunImages
                 self.currentAmmo = self.shotgunAmmo
                 self.currentMaxAmmo = self.maxShotgunAmmo
+            elif kind == "sword":
+                self.gun = "sword"
+                self.images = self.swordImages
+                self.currentAmmo = self.swordAmmo
+                self.currentMaxAmmo = self.maxSwordAmmo
             self.maxFrame = len(self.images) - 1
             self.frame = 0
         
@@ -241,3 +266,8 @@ class Player(pygame.sprite.Sprite):
             self.gunReload = 1
             self.reloading = True
             self.shotgunAmmo = self.maxShotgunAmmo
+        elif self.gun == "sword":
+            self.gunReload = 1
+            self.reloading = True
+            self.swordAmmo = self.maxSwordAmmo
+        
