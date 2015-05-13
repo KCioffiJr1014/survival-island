@@ -6,6 +6,7 @@ from Sword import Sword
 from Crosshair import Crosshair
 from Health import HealthBar
 from AmmoHUD import Ammo
+from Block import Block
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, size = [100,100]):
@@ -151,11 +152,12 @@ class Player(pygame.sprite.Sprite):
         self.image = rot_image
     
     def collideHardBlock(self, block):
-        self.speedx = -self.speedx
-        self.speedy = -self.speedy
-        self.move()
-        self.speedx = 0
-        self.speedy = 0
+        
+            self.speedx = -self.speedx
+            self.speedy = -self.speedy
+            self.move()
+            self.speedx = 0
+            self.speedy = 0
     
     def go(self, direction):
         if direction == "up":
