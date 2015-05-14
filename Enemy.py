@@ -35,6 +35,14 @@ class Enemy(pygame.sprite.Sprite):
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
+    def collideHardBlock(self, block):
+        
+            self.speedx = -self.speedx
+            self.speedy = -self.speedy
+            self.move()
+            self.speedx = 0
+            self.speedy = 0
+        
     '''def PlayerPoint(self, player):
          mousePos
         mousePosPlayerX

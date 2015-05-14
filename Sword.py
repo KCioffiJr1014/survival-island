@@ -17,8 +17,8 @@ class Sword(pygame.sprite.Sprite):
         #print angle, pos, [x,y]
         self.place([x,y])    
         self.living = True
-        self.speedx = math.cos(math.radians(self.angle))*15
-        self.speedy = -math.sin(math.radians(self.angle))*15
+        self.speedx = math.cos(math.radians(self.angle))*20
+        self.speedy = -math.sin(math.radians(self.angle))*20
         self.speed = [self.speedx, self.speedy] 
        
         

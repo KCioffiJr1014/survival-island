@@ -126,7 +126,7 @@ while True:
     
     Enemys = []
     maxEnemy = 25
-    Enemys += [Enemy("images/enemy/pr1.png", [1, 2], [100, 125])]
+    Enemys += [Enemy("images/enemy/pr1.png", [0, 0], [200, 150])]
     
     
     
@@ -233,12 +233,20 @@ while True:
         
         swordHitEnemys = pygame.sprite.groupcollide(swords, enemys, False, True)
         
+        enemyHitHardBlocks = pygame.sprite.groupcollide(enemys, hardblocks, False, False)
+        
+        
+        
         
         #enemyHitHealth = pygame.sprite.groupcollide(enemys, healthbars, False, False)
         
         for player in playersHitHardBlocks:
             for hardblock in playersHitHardBlocks[player]:
                 player.collideHardBlock(hardblock)
+                
+        for enemy in enemyHitHardBlocks:
+            for hardblock in enemyHitHardBlocks[enemy]:
+                enemy.collideHardBlock(hardblock)
     
     
         '''for healthbar in enemyHitHealth:
