@@ -40,8 +40,8 @@ class Enemy(pygame.sprite.Sprite):
             self.speedx = -self.speedx
             self.speedy = -self.speedy
             self.move()
-            self.speedx = 0
-            self.speedy = 0
+            self.speedx = -self.speedx
+            self.speedy = -self.speedy
         
     '''def PlayerPoint(self, player):
          mousePos

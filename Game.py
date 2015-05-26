@@ -98,6 +98,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton2.release(event.pos):
                     running = False
+                
                     sys.exit()
                     
         bgColor = r,g,b
